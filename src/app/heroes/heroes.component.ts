@@ -9,16 +9,18 @@ import { HEROES } from '../mock-heroes';
 })
 
 export class HeroesComponent { 
-  hero: Hero = { // objeto heroe
-    id: 1,
-    name: 'Windstorm'
-  };
   
   heroes = HEROES;
+  selectedHero: Hero;
 
   constructor() { }
 
   ngOnInit() {
     // gancho de ciclo de vida. logica de inicializacion.
   }
+  
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+
 }
