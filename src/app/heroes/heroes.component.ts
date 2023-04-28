@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
 import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes', // elementos css para componente
@@ -14,11 +14,12 @@ export class HeroesComponent {
   selectedHero?: Hero;
   heroes = Hero[];
 
-  constructor(private heroService: HeroService) { } // inyeccion de dependencia
+  constructor(private heroService: HeroService, private messageService: MessageService) { } // inyeccion de dependencia
 
   ngOnInit() {
     // gancho de ciclo de vida. logica de inicializacion.
     this.getHeroes();
+    this.messageService.add(`HeroesComponent: Selected hero id=${this.heroes.id}`); // ${hero.id}
   }
   
   onSelect(hero: Hero): void {
