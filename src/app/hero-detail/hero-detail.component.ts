@@ -9,11 +9,24 @@ import { HeroService } from '../hero.service';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit{
   @Input() hero?: Hero;
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
   ) { }
+
+  ngOnInit(): void {
+    this.getHero();
+  }
+
+  getHero(): void {
+    const id = +this.route.snapshot.paramMap.get('id'); // imagen estatica de la info de la ruta despues del componente
+    // paramMap diccionario de valores de parametros de rutas extraidos de la url.
+    // el + convierte la cadena en un numero 
+    this.heroService.getHero(id)
+      .subscribe(hero => this.hero = hero);
+  }
 }
