@@ -14,6 +14,6 @@ export class HeroService {
   constructor() { }
 
   getHeroes(): Observable<Hero[]> {
-    return of(HEROES);
+    return of(HEROES); // emite un valor unico, cojutno de heroes simulados
   }
 }

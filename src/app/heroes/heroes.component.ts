@@ -26,7 +26,8 @@ export class HeroesComponent {
   }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes); //pasa el arreglo emitida a la devolución de llamada, que establece la propiedad 'heroes' del componente.
   }
 
 
