@@ -15,7 +15,7 @@ export class HeroService {
   constructor(private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
-    this.messageService.add('HeroService: fetched heroes');
+    this.messageService.add('HeroService: fetched heroes'); // envia un mensaje cuando se envien los heroes
     return of(HEROES); // emite un valor unico, cojutno de heroes simulados
   }
 }
