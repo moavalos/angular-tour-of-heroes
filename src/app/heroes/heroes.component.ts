@@ -11,19 +11,14 @@ import { MessageService } from '../message.service';
 
 export class HeroesComponent implements OnInit { 
   
-  selectedHero?: Hero;
   heroes?: Hero[]
 
-  constructor(private heroService: HeroService, private messageService: MessageService) { } // inyeccion de dependencia
+  constructor(private heroService: HeroService) { } // inyeccion de dependencia
 
   ngOnInit() {
     // gancho de ciclo de vida. logica de inicializacion.
     this.getHeroes();
   }  
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
 
   getHeroes(): void {
     this.heroService.getHeroes()
