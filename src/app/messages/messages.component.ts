@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -10,4 +10,6 @@ export class MessagesComponent {
 
   constructor(public messageService: MessageService) { } // se inyecta el unico message en esa propiedad
 
+  ngOnInit() {
+  }
 }
