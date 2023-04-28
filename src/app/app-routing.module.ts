@@ -9,7 +9,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)], // el metodo configura el enrutador.
+  // proporciona proveedores de servicvios y directivas para enrutamiento
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
