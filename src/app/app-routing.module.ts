@@ -6,7 +6,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 // indican al enrutador que vista mostrar cuando un usuario hace clic en un enlace o pega una url
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // coincidir la url con path: heroes y mostrar heroesComponent
 ];
 
