@@ -11,13 +11,14 @@ import { HeroService } from '../hero.service';
 
 export class HeroesComponent { 
   
-  heroes = Hero[];
   selectedHero?: Hero;
+  heroes = Hero[];
 
   constructor(private heroService: HeroService) { } // inyeccion de dependencia
 
   ngOnInit() {
     // gancho de ciclo de vida. logica de inicializacion.
+    this.getHeroes();
   }
   
   onSelect(hero: Hero): void {
@@ -27,6 +28,6 @@ export class HeroesComponent {
   getHeroes(): void {
     this.heroes = this.heroService.getHeroes();
   }
-  
+
 
 }
