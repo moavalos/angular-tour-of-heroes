@@ -24,4 +24,9 @@ export class HeroesComponent {
     this.selectedHero = hero;
   }
 
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
+  
+
 }
