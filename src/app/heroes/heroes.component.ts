@@ -9,21 +9,20 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroes.component.css'] // ubicacion del css privados
 })
 
-export class HeroesComponent { 
+export class HeroesComponent implements OnInit { 
   
   selectedHero?: Hero;
-  heroes = Hero[];
+  heroes?: Hero[]
 
   constructor(private heroService: HeroService, private messageService: MessageService) { } // inyeccion de dependencia
 
   ngOnInit() {
     // gancho de ciclo de vida. logica de inicializacion.
     this.getHeroes();
-    this.messageService.add(`HeroesComponent: Selected hero id=${this.heroes.id}`); // ${hero.id}
-  }
-  
+  }  
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
 
   getHeroes(): void {
