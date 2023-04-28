@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule // mecanismo pra comunicarse con uin servidor remoto
   ],
   providers: [],
   bootstrap: [AppComponent]
