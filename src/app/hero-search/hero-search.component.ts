@@ -26,15 +26,17 @@ export class HeroSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
 
+  //el método ngOnInit() filtra los searchTerms observables a través de una secuencia de operadores RxJS que reducen el número de llamadas searchHeroes(), en última instancia, devuelve un observable de resultados de búsqueda de héroes oportunos(cada uno un Héroe[]).
   ngOnInit(): void {
     this.heroes$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
+      
+      // esperar 300 ms después de cada pulsación de tecla antes de considerar el término
       debounceTime(300),
 
-      // ignore new term if same as previous term
+      // ignorar el nuevo término si es el mismo que el anterior. asegura que una solicitud se envíe solo si el texto del filtro cambió.
       distinctUntilChanged(),
 
-      // switch to new search observable each time the term changes
+      // cambiar a una nueva búsqueda observable cada vez que cambia el término
       switchMap((term: string) => this.heroService.searchHeroes(term)),
     );
   }
