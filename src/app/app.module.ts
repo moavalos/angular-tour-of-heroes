@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http'; // mecanismo para comun
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
+
 // archivos y bibliotecas necesita la app = metadata
 // decorador mas importante
 @NgModule({
@@ -26,7 +27,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule, 
-    HttpClientInMemoryWebApiModule.forRoot(
+    HttpClientInMemoryWebApiModule.forRoot( // toma la clase y prepara la base de datos en memoria
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
