@@ -26,6 +26,7 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
+        tap(_ => this.log('fetched heroes')), // 
         catchError(this.handleError<Hero[]>('getHeroes', []))
         // catch Error intercepta un observable q falló. pasa el error a un controlador de erores que puede hacer lo q quiera con el error.
         // handleError informa el error y devuelve un resultado inocuo para q siga funciuonando
