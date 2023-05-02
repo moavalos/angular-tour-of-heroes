@@ -17,7 +17,7 @@ import { HeroService } from '../hero.service';
 export class HeroSearchComponent implements OnInit {
   heroes$!: Observable<Hero[]>;
   // un subject es una fuente de valores observables como un Observable.
-  private searchTerms = new Subject<string>(); 
+  private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) { }
 
@@ -29,7 +29,7 @@ export class HeroSearchComponent implements OnInit {
   //el método ngOnInit() filtra los searchTerms observables a través de una secuencia de operadores RxJS que reducen el número de llamadas searchHeroes(), en última instancia, devuelve un observable de resultados de búsqueda de héroes oportunos(cada uno un Héroe[]).
   ngOnInit(): void {
     this.heroes$ = this.searchTerms.pipe(
-      
+
       // esperar 300 ms después de cada pulsación de tecla antes de considerar el término
       debounceTime(300),
 

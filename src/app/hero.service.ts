@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,7 +27,7 @@ export class HeroService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-    // getHero construye una url de solicitud. se responde con un solo heroe. devuelve un observable
+  // getHero construye una url de solicitud. se responde con un solo heroe. devuelve un observable
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -37,6 +36,20 @@ export class HeroService {
         catchError(this.handleError<Hero[]>('getHeroes', []))
         // catch Error intercepta un observable q falló. pasa el error a un controlador de erores que puede hacer lo q quiera con el error.
         // handleError informa el error y devuelve un resultado inocuo para q siga funciuonando
+      );
+  }
+
+  /** GET hero by id. Return `undefined` when id not found */
+  getHeroNo404<Data>(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/?id=${id}`;
+    return this.http.get<Hero[]>(url)
+      .pipe(
+        map(heroes => heroes[0]), // returns a {0|1} element array
+        tap(h => {
+          const outcome = h ? `fetched` : `did not find`;
+          this.log(`${outcome} hero id=${id}`);
+        }),
+        catchError(this.handleError<Hero>(`getHero id=${id}`))
       );
   }
 
@@ -59,7 +72,7 @@ export class HeroService {
  * @param operation - name of the operation that failed
  * @param result - optional value to return as the observable result
  */
-/*Como cada método de servicio devuelve un tipo diferente de resultado 'Observable', handleError() toma un parámetro de tipo para que pueda devolver el valor seguro como el tipo que la aplicación espera.*/
+  /*Como cada método de servicio devuelve un tipo diferente de resultado 'Observable', handleError() toma un parámetro de tipo para que pueda devolver el valor seguro como el tipo que la aplicación espera.*/
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

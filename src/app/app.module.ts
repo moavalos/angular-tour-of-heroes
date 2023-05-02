@@ -28,7 +28,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot( // toma la clase y prepara la base de datos en memoria
       InMemoryDataService, { dataEncapsulation: false }
     )
