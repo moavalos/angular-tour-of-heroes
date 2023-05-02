@@ -23,10 +23,12 @@ export class HeroService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
+    // getHero construye una url de solicitud. se responde con un solo heroe. devuelve un observable
+
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')), // 
+        tap(_ => this.log('fetched heroes')), // efectos secundarios para fuente observable.
         catchError(this.handleError<Hero[]>('getHeroes', []))
         // catch Error intercepta un observable q falló. pasa el error a un controlador de erores que puede hacer lo q quiera con el error.
         // handleError informa el error y devuelve un resultado inocuo para q siga funciuonando
@@ -34,9 +36,11 @@ export class HeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find(h => h.id === id)!;
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(hero);
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
   }
 
   /** Log a HeroService message with the MessageService */
