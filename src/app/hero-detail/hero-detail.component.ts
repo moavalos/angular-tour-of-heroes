@@ -33,4 +33,12 @@ export class HeroDetailComponent implements OnInit{
   goBack(): void {
     this.location.back();
   }
+
+  // metodo que persiste camvios de nombre de heroe usando el servicvio y despuies lo muestra
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
+  }
 }
