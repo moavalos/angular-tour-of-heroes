@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+describe('AppComponent', () => { // modulo para crear pruebas
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -23,13 +23,15 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-tour-of-heroes'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-tour-of-heroes');
+    expect(app.title).toEqual('Tour of Heroes');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-tour-of-heroes app is running!');
+    const h1 = compiled.querySelector('h1');
+    expect(h1?.textContent).toContain(component.title);
   });
 });
