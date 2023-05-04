@@ -20,7 +20,7 @@ describe('AppComponent', () => { // modulo para crear pruebas
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-tour-of-heroes'`, () => {
+  it(`should have as title 'Tour of heroes'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Tour of Heroes');
@@ -34,4 +34,6 @@ describe('AppComponent', () => { // modulo para crear pruebas
     const h1 = compiled.querySelector('h1');
     expect(h1?.textContent).toContain(component.title);
   });
+
+  
 });
