@@ -9,7 +9,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http'; // mecanismo para comunicarse con un servidor remoto a traves de http
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from '../adaptadores/in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 
