@@ -1,6 +1,7 @@
 import { Observable } from "rxjs"
-import { Hero } from "src/app/dominio/modelo/hero"
+import { Hero } from "../dominio/modelo/hero"
 
+// en el puerto, iran interfaces que definen metodos para abtraerse 
 export default interface IDisplayHeroDetail {
 
     hero: Hero
